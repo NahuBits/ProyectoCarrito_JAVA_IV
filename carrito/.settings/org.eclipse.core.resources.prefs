@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java/controller/ArticuloController.java=UTF-8
+encoding//src/main/java/controller/CarritoController.java=UTF-8
+encoding//src/main/java/controller/EliminarDelCarritoController.java=UTF-8
+encoding//src/main/java/controller/LoginController.java=UTF-8
+encoding//src/main/java/controller/LogoutController.java=UTF-8
+encoding//src/main/java/controller/MenuController.java=UTF-8
+encoding//src/main/java/services/ArticuloService.java=UTF-8
+encoding//src/main/java/services/CarritoService.java=UTF-8
+encoding//src/main/java/services/CarritoServiceSingleton.java=UTF-8
+encoding//src/main/java/services/ProveedorServicios.java=UTF-8
+encoding//src/main/java/services/UsuarioService.java=UTF-8
