@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
         if (user != null) {
         	HttpSession sesion = request.getSession();
         	sesion.setAttribute("usuario", user);
-        	// Guardamos el tipo como String (por ejemplo, "EMPLEADO" o "CLIENTE")
+        	
         	sesion.setAttribute("rol", user.getTipo().name());
 
                 response.sendRedirect("menu");

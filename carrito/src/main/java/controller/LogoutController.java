@@ -17,24 +17,24 @@ public class LogoutController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession(false); // no crear nueva si no existe
+        HttpSession session = request.getSession(false); 
         if (session != null) {
         	CarritoService carritoService = ProveedorServicios.getInstance().getCarritoService();
-        	carritoService.restaurarStockCarrito(); // Restaurar stock antes de cerrar sesi�n
-            session.invalidate(); // Cierra la sesión actual
+        	carritoService.restaurarStockCarrito(); 
+            session.invalidate(); 
         }
 
-        // Evita que el navegador use caché después del logout
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-        response.setDateHeader("Expires", 0); // Proxies
+       
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+        response.setHeader("Pragma", "no-cache"); 
+        response.setDateHeader("Expires", 0); 
 
-        response.sendRedirect("login"); // Redirige al login
+        response.sendRedirect("login"); 
     }
 
-    // Opción: manejar también el POST si hacés logout desde un formulario
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        doGet(request, response); // Reutiliza la lógica
+        doGet(request, response); 
     }
 }

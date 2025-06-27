@@ -12,9 +12,7 @@ import services.ProveedorServicios;
 import services.SaldoService;
 import services.UsuarioService;
 
-/**
- * Servlet implementation class SaldoController
- */
+
 @WebServlet("/saldo/*")
 public class SaldoController extends HttpServlet {
 private SaldoService saldoService = ProveedorServicios.getInstance().getSaldoService();
@@ -65,7 +63,7 @@ private void agregarSaldo(HttpServletRequest req, HttpServletResponse resp, Usua
 		req.setAttribute("mensaje", "Se cargaron $" + monto + " correctamente.");
 		}
 		} catch (NumberFormatException e) {
-		req.setAttribute("error", "Monto inválido.");
+		req.setAttribute("error", "Monto invalido.");
 		}
 
 		 req.getRequestDispatcher("/views/saldo/gestionar.jsp").forward(req, resp);
@@ -79,7 +77,7 @@ private void transferirSaldo(HttpServletRequest req, HttpServletResponse resp, U
          if (monto <= 0) {
              req.setAttribute("error", "El monto debe ser mayor a 0.");
          } else if (origen.getNombreUsuario().equals(destinoNombre)) {
-             req.setAttribute("error", "No puede transferirse saldo a sí mismo.");
+             req.setAttribute("error", "No puede transferirse saldo a si mismo.");
          } else {
              boolean exito = saldoService.transferir(origen.getNombreUsuario(), destinoNombre, monto);
              if (exito) {
@@ -89,7 +87,7 @@ private void transferirSaldo(HttpServletRequest req, HttpServletResponse resp, U
              }
          }
      } catch (NumberFormatException e) {
-         req.setAttribute("error", "Monto inválido.");
+         req.setAttribute("error", "Monto invaalido.");
      }
 
      req.getRequestDispatcher("/views/saldo/gestionar.jsp").forward(req, resp);

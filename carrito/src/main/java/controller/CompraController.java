@@ -14,9 +14,7 @@ import models.Usuario;
 import services.CarritoService;
 import services.ProveedorServicios;
 
-/**
- * Servlet implementation class CompraController
- */
+
 @WebServlet("/compras/*")
 public class CompraController extends HttpServlet {
 private CarritoService carritoService = ProveedorServicios.getInstance().getCarritoService();

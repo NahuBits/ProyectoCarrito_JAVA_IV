@@ -16,16 +16,21 @@ public class ArticuloController extends HttpServlet {
     private ArticuloService articuloService = ArticuloService.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String path = request.getPathInfo(); // obtiene lo que viene después de /articulos
+//    	para el ABM de articulo, dependiendo de la ruta (/listar, /nuevo, /editar, /eliminar)
+    	String req = request.getPathInfo(); 
     	
-    	if (path == null || "/".equals(path) || path.equals("/listar")) {
-    	    // Listar artículos
+//    	vista para verlos articulos
+    	if (req == null || "/".equals(req) || req.equals("/listar")) {
+    	    
     	    request.setAttribute("articulos", articuloService.obtenerTodos());
     	    request.getRequestDispatcher("/views/articulos/listar.jsp").forward(request, response);
-    	} else if (path.equals("/nuevo")) {
-    	    // Formulario vacío para agregar
+//    	   vista para el alta de articulos
+    	} else if (req.equals("/nuevo")) {
+
     	    request.getRequestDispatcher("/views/articulos/formulario.jsp").forward(request, response);
-    	} else if (path.equals("/editar")) {
+    	    
+//    	   vista para editar los articulos
+    	} else if (req.equals("/editar")) {
     	    try {
     	        long codigo = Long.parseLong(request.getParameter("codigo"));
     	        Articulo art = articuloService.buscarPorCodigo(codigo);
@@ -38,12 +43,13 @@ public class ArticuloController extends HttpServlet {
     	    } catch (NumberFormatException e) {
     	        response.sendRedirect("listar");
     	    }
-    	} else if (path.equals("/eliminar")) {
+//    	   vista para eliminar articulos
+    	} else if (req.equals("/eliminar")) {
     	    try {
     	        long codigo = Long.parseLong(request.getParameter("codigo"));
     	        articuloService.eliminar(codigo);
     	    } catch (NumberFormatException e) {
-    	        // manejar error si querés
+    	    	
     	    }
     	    response.sendRedirect(request.getContextPath() + "/articulos");
     	} else {
@@ -52,36 +58,37 @@ public class ArticuloController extends HttpServlet {
     }
     
     private boolean camposValidos(HttpServletRequest request) {
-    	String path = request.getPathInfo();
+    	String req = request.getPathInfo();
     	return request.getParameter("descripcion") != null &&
     	request.getParameter("precio") != null &&
     	request.getParameter("stock") != null &&
-    	(!"/editar".equals(path) || request.getParameter("codigo") != null);
+    	(!"/editar".equals(req) || request.getParameter("codigo") != null);
     	}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String path = request.getPathInfo();
+    	String req = request.getPathInfo();
     	
-    	if (path == null) {
+//    	si req es null redirije a listar
+    	if (req == null) {
     	    response.sendRedirect("listar");
     	    return;
     	}
 
     	if (!camposValidos(request)) {
-    	    request.setAttribute("error", "Campos inválidos");
+    	    request.setAttribute("error", "Campos invalidos");
     	    request.getRequestDispatcher("/views/articulos/formulario.jsp").forward(request, response);
     	    return;
     	}
-
+//despues de las validaciones creamos el articulo
     	try {
     	    Articulo articulo = construirArticuloDesdeRequest(request);
-    	    if (path.equals("/editar")) {
+    	    if (req.equals("/editar")) {
     	        articuloService.actualizar(articulo);
-    	    } else if (path.equals("/nuevo")) {
+    	    } else if (req.equals("/nuevo")) {
     	        articuloService.agregar(articulo);
     	    }
     	} catch (NumberFormatException e) {
-    	    request.setAttribute("error", "Datos numéricos inválidos");
+    	    request.setAttribute("error", "Datos numericos invalidos");
     	    request.getRequestDispatcher("/views/articulos/formulario.jsp").forward(request, response);
     	    return;
     	}
@@ -90,11 +97,12 @@ public class ArticuloController extends HttpServlet {
     }
 
     private Articulo construirArticuloDesdeRequest(HttpServletRequest request) throws NumberFormatException {
-    	String codigoStr = request.getParameter("codigo");
+//    	metodo que crea el objeto articulo
+    	String cod = request.getParameter("codigo");
     	long codigo = 0;
     	
-    	if (codigoStr != null && !codigoStr.isEmpty()) {
-    		codigo = Long.parseLong(codigoStr);
+    	if (cod != null && !cod.isEmpty()) {
+    		codigo = Long.parseLong(cod);
     	}
     	
     	String descripcion = request.getParameter("descripcion");

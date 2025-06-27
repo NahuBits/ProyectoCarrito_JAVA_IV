@@ -67,7 +67,7 @@ public class CarritoService {
         Compra compra = new Compra(usuario);
         for (DetalleCompra d : carrito) {
             compra.agregarDetalle(d);
-            // Ya fue descontado del stock
+            
         }
         historial.add(compra);
         carrito.clear();

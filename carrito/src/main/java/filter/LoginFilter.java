@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class LoginFilter
- */
+
 @WebFilter("/*")
 public class LoginFilter implements Filter {
 
@@ -36,7 +34,7 @@ public class LoginFilter implements Filter {
         boolean isResource = uri.contains("/css/") || uri.contains("/js/") || uri.contains("/images/");
 
         if (loggedIn || isLoginPage || isLogoutPage || isMenuServlet || isResource) {
-            // 🧼 Evitar caché de páginas protegidas
+            
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);

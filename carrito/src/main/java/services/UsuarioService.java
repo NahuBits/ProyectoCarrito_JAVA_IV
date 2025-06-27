@@ -10,13 +10,14 @@ public class UsuarioService {
     private static UsuarioService instancia;
     private List<Usuario> usuarios;
 
+    //cargamos los usuarios catalogados como cliente y empleadpo y los agregamos en una lista 
     private UsuarioService() {
         usuarios = new LinkedList<>();
-
-        // Usuarios precargados
-        usuarios.add(new Usuario("cliente1", "1234", TipoUsuario.CLIENTE));
-        usuarios.add(new Usuario("cliente2", "1234", TipoUsuario.CLIENTE));
-        usuarios.add(new Usuario("empleado1", "admin", TipoUsuario.EMPLEADO));
+   
+        usuarios.add(new Usuario("Cristina", "1234", TipoUsuario.CLIENTE));
+        usuarios.add(new Usuario("Ismael", "5678", TipoUsuario.CLIENTE));
+        usuarios.add(new Usuario("Gonzalo", "9012", TipoUsuario.CLIENTE));
+        usuarios.add(new Usuario("Ernesto", "admin", TipoUsuario.EMPLEADO));
     }
 
     public static UsuarioService getInstance() {

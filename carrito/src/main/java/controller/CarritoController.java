@@ -82,7 +82,7 @@ public class CarritoController extends HttpServlet {
         Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 
         if (carritoService.getCarrito().isEmpty()) {
-            // carrito vacio, no permitir compra
+            // cuando el carrito esta vacio no permitir compra 
             resp.sendRedirect(req.getContextPath() + "/carrito/ver?error=El+carrito+esta+vacio.+Agregue+articulos+antes+de+comprar");
             return;
         }

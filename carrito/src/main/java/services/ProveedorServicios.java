@@ -12,12 +12,12 @@ public class ProveedorServicios {
 	
 	private ProveedorServicios() {
 		UsuarioService usuarioService = UsuarioService.getInstance();
-		// Crear un mapa a partir de los usuarios existentes
+		
 	    Map<String, Usuario> usuariosMap = new HashMap<>();
 	    for (Usuario u : usuarioService.getUsuarios()) {
 	        usuariosMap.put(u.getNombreUsuario(), u);
 	    }
-        // Aquí deberías cargar los usuarios existentes o pasar tu repositorio
+        
         saldoService = new SaldoService(usuariosMap);
     }
 	
