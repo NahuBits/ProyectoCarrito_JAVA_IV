@@ -20,16 +20,32 @@ String ctx = request.getContextPath();
 <head>
 <meta charset="UTF-8">
 <title>Panel del Cliente</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS personalizado -->
+<link href="<%= ctx %>/css/estilos.css" rel="stylesheet">
+
 </head>
-<body>
-	<h1>Bienvenido Cliente <%= usuario.getNombreUsuario() %></h1>
-	<ul>
-		<li><a href="<%= ctx %>/carrito/articulos">Ver Artículos</a></li>
-		<li><a href="<%= ctx %>/carrito/ver">Ver Carrito</a></li>
-		<li><a href="<%= ctx %>/compras/historial">Historial de Compras</a></li>
-		<li><a href="<%= request.getContextPath() %>/saldo/gestionar">Gestionar Saldo</a></li>
-		<li><a href="<%= ctx %>/logout">Cerrar Sesión</a></li>
-	</ul>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow mx-auto" style="max-width: 500px;">
+            <div class="card-body text-center">
+                <h3 class="card-title">Bienvenido, <%= usuario.getNombreUsuario() %> 🛍️</h3>
+                <p class="text-muted">Panel de control del cliente</p>
+
+                <div class="d-grid gap-3 mt-4">
+                    <a href="<%= ctx %>/carrito/articulos" class="btn btn-primary">Ver Artículos</a>
+                    <a href="<%= ctx %>/carrito/ver" class="btn btn-info">Ver Carrito</a>
+                    <a href="<%= ctx %>/compras/historial" class="btn btn-secondary">Historial de Compras</a>
+                    <a href="<%= ctx %>/saldo/gestionar" class="btn btn-success">Gestionar Saldo</a>
+                    <a href="<%= ctx %>/logout" class="btn btn-outline-danger">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
+    
 

@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
                 response.sendRedirect("menu");
            
         } else {
-            request.setAttribute("error", "Usuario o contraseÃ±a invÃ¡lidos");
+            request.setAttribute("error", "Usuario o contraseña invalidos");
             request.getRequestDispatcher("views/usuarios/login.jsp").forward(request, response);
         }
     }

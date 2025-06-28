@@ -13,7 +13,7 @@
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Tu CSS personalizado -->
+<!-- CSS personalizado -->
 <link href="<%= ctx %>/css/estilos.css" rel="stylesheet">
 </head> <body class="bg-light"> <div class="container mt-5"> <div class="card shadow mx-auto" style="max-width: 500px;"> <div class="card-body text-center"> <h3 class="card-title">Bienvenido, <%= usuario.getNombreUsuario() %> 👨‍💼</h3> <p class="text-muted">Panel de control del empleado</p>
 

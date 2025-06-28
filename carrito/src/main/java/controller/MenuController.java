@@ -14,6 +14,7 @@ import models.Usuario;
 public class MenuController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    	este metodo verifica el tipo de usuario, y lo lleva a la vista que le corresponda segun el login(clinete o empleado)
         HttpSession session = req.getSession(false);
 
         if (session == null || session.getAttribute("usuario") == null) {
