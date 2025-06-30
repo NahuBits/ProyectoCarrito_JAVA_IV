@@ -15,8 +15,8 @@ public class UsuarioService {
         usuarios = new LinkedList<>();
    
         usuarios.add(new Usuario("Cristina", "1234", TipoUsuario.CLIENTE));
-        usuarios.add(new Usuario("Ismael", "5678", TipoUsuario.CLIENTE));
-        usuarios.add(new Usuario("Gonzalo", "9012", TipoUsuario.CLIENTE));
+        usuarios.add(new Usuario("Ismael", "1234", TipoUsuario.CLIENTE));
+        usuarios.add(new Usuario("Gonzalo", "1234", TipoUsuario.CLIENTE));
         usuarios.add(new Usuario("Ernesto", "admin", TipoUsuario.EMPLEADO));
     }
 
