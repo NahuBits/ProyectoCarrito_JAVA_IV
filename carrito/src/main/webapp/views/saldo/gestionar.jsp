@@ -6,10 +6,11 @@
     response.setDateHeader("Expires", 0);
 
     Usuario usuario = (Usuario) session.getAttribute("usuario");
-    if (usuario == null || usuario.getTipo() == null || !usuario.getTipo().name().equals("CLIENTE")) {
+    if (usuario == null || usuario.getTipo() == null) {
         response.sendRedirect("../../login");
         return;
     }
+
 
     String mensaje = (String) request.getAttribute("mensaje");
     String error = (String) request.getAttribute("error");
